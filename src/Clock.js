@@ -4,6 +4,7 @@ const Clock = () => {
   const [time, setTime] = useState(new Date());
   const [darkMode, setDarkMode] = useState(true);
   const [timeZone, setTimeZone] = useState("Africa/Harare");
+    const [is24Hour, setIs24Hour] = useState(false); // Toggle state
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -13,10 +14,13 @@ const Clock = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Format time based on selected time zone
+ // Format time based on selected time zone and format
   const formattedTime = new Intl.DateTimeFormat("en-US", {
     timeZone,
-    timeStyle: "medium",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: !is24Hour, // Toggle between 12-hour and 24-hour format
   }).format(time);
 
   const formattedDate = new Intl.DateTimeFormat("en-US", {
@@ -32,11 +36,19 @@ const Clock = () => {
         
         {/* Time Zone Selector */}
         <select style={styles.select} value={timeZone} onChange={(e) => setTimeZone(e.target.value)}>
+          
           <option value="Africa/Harare">Harare (CAT)</option>
           <option value="America/New_York">New York (EST)</option>
           <option value="Europe/London">London (GMT)</option>
           <option value="Asia/Tokyo">Tokyo (JST)</option>
         </select>
+
+         {/* 12-hour / 24-hour Toggle */}
+      <button style={styles.button2}
+        onClick={() => setIs24Hour(!is24Hour)}
+      >
+        {is24Hour ? "Switch to 12-Hour Format" : "Switch to 24-Hour Format"}
+      </button>
 
         {/* Dark/Light Mode Toggle */}
         <button style={styles.button} onClick={() => setDarkMode(!darkMode)}>
@@ -82,6 +94,16 @@ const styles = {
     borderRadius: "5px",
     cursor: "pointer",
     backgroundColor: "#007bff",
+    color: "white",
+    border: "none",
+    marginTop: "10px",
+  },
+  button2: {
+    padding: "10px 20px",
+    fontSize: "1rem",
+    borderRadius: "5px",
+    cursor: "pointer",
+    backgroundColor: "rgb(12 131 98)",
     color: "white",
     border: "none",
     marginTop: "10px",

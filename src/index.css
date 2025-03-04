@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button {
+    min-width: -webkit-fill-available;
+}
+
+select {
+    width: -webkit-fill-available;
+}
