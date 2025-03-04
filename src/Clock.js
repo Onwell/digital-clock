@@ -4,7 +4,7 @@ const Clock = () => {
   const [time, setTime] = useState(new Date());
   const [darkMode, setDarkMode] = useState(true);
   const [timeZone, setTimeZone] = useState("Africa/Harare");
-    const [is24Hour, setIs24Hour] = useState(false); // Toggle state
+    const [is24Hour, setIs24Hour] = useState(false); 
 
   useEffect(() => {
     const interval = setInterval(() => {
