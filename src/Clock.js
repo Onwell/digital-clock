@@ -43,7 +43,7 @@ const styles = {
     fontFamily: "Arial, sans-serif",
   },
   time: {
-    fontSize: "7rem",
+    fontSize: "5rem",
     fontFamily: "Arial, sans-serif",
   },
 };
