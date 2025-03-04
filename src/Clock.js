@@ -13,7 +13,10 @@ const Clock = () => {
 
   return (
     <div style={styles.clockContainer}>
-      <h1 style={styles.time}>{time.toLocaleTimeString()}</h1>
+      <div style={styles.clockContent}>
+        <h2 style={styles.date}>{time.toDateString()}</h2>
+        <h1 style={styles.time}>{time.toLocaleTimeString()}</h1>
+      </div>
     </div>
   );
 };
@@ -26,9 +29,21 @@ const styles = {
     height: "100vh",
     backgroundColor: "#282c34",
     color: "white",
-    fontSize: "3rem",
+    fontSize: "2rem",
+    textAlign: "center",
+  },
+  clockContent: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  date: {
+    fontSize: "2rem",
+    marginBottom: "10px",
+    fontFamily: "Arial, sans-serif",
   },
   time: {
+    fontSize: "7rem",
     fontFamily: "Arial, sans-serif",
   },
 };
